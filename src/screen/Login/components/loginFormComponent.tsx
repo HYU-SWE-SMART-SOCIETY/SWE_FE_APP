@@ -16,6 +16,8 @@ export const LoginFormComponent = (): ReactElement | null => {
         <Text style={textStyles.tag}>{'비밀번호'}</Text>
         <TextInput
           style={componentStyles.inputContainer}
+          textContentType={'password'}
+          secureTextEntry={true}
           placeholder={'비밀번호를 입력해주세요.'}
           placeholderTextColor={'#A19B9B'}
         />
@@ -43,6 +45,7 @@ const componentStyles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#000000',
     fontSize: 10,
+    color: '#000000',
   },
 });
 
