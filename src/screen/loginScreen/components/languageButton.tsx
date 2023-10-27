@@ -3,11 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export const LanguageButton = (): ReactElement | null => {
   return (
-    <View
-      style={{
-        marginEnd: 16,
-        marginTop: 20,
-      }}>
+    <View>
       <TouchableOpacity style={componentStyles.buttonContainer} >
         <Text style={{fontSize: 10, color: '#000000', marginStart: 13}}>
           한국어 TODO

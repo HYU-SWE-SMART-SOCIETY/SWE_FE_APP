@@ -1,6 +1,10 @@
 import React, {ReactElement} from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { LanguageButton } from "./components/languageButton";
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {LanguageButton} from './components/languageButton';
+import {LoginFormComponent} from './components/loginFormComponent';
+import {LoginButtonComponent} from './components/loginButtonComponent';
+import {AccountUtilsComponent} from './components/accountUtilsComponent';
+import {SNSLoginButtonComponent} from './components/snsLoginButtonComponent';
 
 export const LoginScreen = (): ReactElement | null => {
   return (
@@ -10,7 +14,19 @@ export const LoginScreen = (): ReactElement | null => {
           <LanguageButton />
         </View>
         <View style={containerStyles.bodyContainer}>
-          <Text style={textStyles.title}>HOLME</Text>
+          <Text style={textStyles.title}>{'HOLME'}</Text>
+          <LoginFormComponent />
+          <LoginButtonComponent />
+          <AccountUtilsComponent />
+          <View
+            style={{
+              width: '100%',
+              height: 1,
+              backgroundColor: '#000000',
+              marginTop: 25,
+            }}
+          />
+          <SNSLoginButtonComponent />
         </View>
       </View>
     </SafeAreaView>
@@ -23,6 +39,7 @@ const containerStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#FFFFFF',
+    padding: 30,
   },
   headerContainer: {
     display: 'flex',
@@ -33,6 +50,7 @@ const containerStyles = StyleSheet.create({
   },
   bodyContainer: {
     display: 'flex',
+    flexDirection: 'column',
     width: '100%',
     justifyContent: 'center',
     marginTop: 40,
@@ -44,6 +62,6 @@ const textStyles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     color: '#000000',
-    margin: 30,
+    marginBottom: 30,
   },
 });
