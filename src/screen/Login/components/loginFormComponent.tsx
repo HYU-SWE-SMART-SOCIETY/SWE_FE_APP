@@ -1,5 +1,6 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {LoginSystemText} from '../assets/strings';
 
 export const LoginFormComponent = (): ReactElement | null => {
   return (
@@ -8,7 +9,7 @@ export const LoginFormComponent = (): ReactElement | null => {
         <Text style={textStyles.tag}>{'아이디 (ID)'}</Text>
         <TextInput
           style={componentStyles.inputContainer}
-          placeholder={'이메일 또는 아이디를 입력해주세요.'}
+          placeholder={LoginSystemText.PlaceHolder_ID}
           placeholderTextColor={'#A19B9B'}
         />
       </View>
@@ -18,7 +19,7 @@ export const LoginFormComponent = (): ReactElement | null => {
           style={componentStyles.inputContainer}
           textContentType={'password'}
           secureTextEntry={true}
-          placeholder={'비밀번호를 입력해주세요.'}
+          placeholder={LoginSystemText.PlaceHolder_PW}
           placeholderTextColor={'#A19B9B'}
         />
       </View>

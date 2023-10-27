@@ -1,14 +1,21 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {WelcomeProps} from '../../types/navigator';
+import window from '@react-navigation/native/lib/typescript/src/__mocks__/window';
+import {Carousel} from '../../utils/components/carousel';
+import {FirstLayer} from './components/firstLayer';
+
+//* Constants
+const screenWidthDimension: number = Math.round(Dimensions.get('window').width);
 
 export const WelcomeScreen = ({
   route,
   navigation,
 }: WelcomeProps): ReactElement | null => {
+  //* Carousel Page Definition
   return (
     <View style={containerStyles.mainContainer}>
-      <Text style={{color: '#000000'}}>TODO: WELCOME SCREEN</Text>
+      <FirstLayer />
     </View>
   );
 };
@@ -19,13 +26,9 @@ const containerStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#FFFFFF',
-    padding: 30,
-  },
-  bodyContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
     justifyContent: 'center',
-    marginTop: 40,
+    alignItems: 'center',
+    padding: 20,
+    flex: 1,
   },
 });
