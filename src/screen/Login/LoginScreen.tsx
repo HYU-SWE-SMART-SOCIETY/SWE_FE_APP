@@ -5,8 +5,12 @@ import {LoginFormComponent} from './components/loginFormComponent';
 import {LoginButtonComponent} from './components/loginButtonComponent';
 import {AccountUtilsComponent} from './components/accountUtilsComponent';
 import {SNSLoginButtonComponent} from './components/snsLoginButtonComponent';
+import {LoginMainProps} from '../../types/navigator';
 
-export const LoginScreen = (): ReactElement | null => {
+export const LoginScreen = ({
+  route,
+  navigation,
+}: LoginMainProps | null): ReactElement | null => {
   return (
     <SafeAreaView>
       <View style={containerStyles.mainContainer}>
