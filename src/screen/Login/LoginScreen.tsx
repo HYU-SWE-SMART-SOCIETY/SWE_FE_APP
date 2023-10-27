@@ -6,6 +6,7 @@ import {LoginButtonComponent} from './components/loginButtonComponent';
 import {AccountUtilsComponent} from './components/accountUtilsComponent';
 import {SNSLoginButtonComponent} from './components/snsLoginButtonComponent';
 import {LoginMainProps} from '../../types/navigator';
+import {LoginSystemText} from './assets/strings';
 
 export const LoginScreen = ({
   route,
@@ -18,7 +19,7 @@ export const LoginScreen = ({
           <LanguageButton />
         </View>
         <View style={containerStyles.bodyContainer}>
-          <Text style={textStyles.title}>{'HOLME'}</Text>
+          <Text style={textStyles.title}>{LoginSystemText.AppName}</Text>
           <LoginFormComponent />
           <LoginButtonComponent />
           <AccountUtilsComponent />
