@@ -2,18 +2,20 @@ import {Animated, Image, StyleSheet, Text, View} from 'react-native';
 import {WelcomeProps} from '../../../types/navigator';
 import React, {ReactElement, useEffect, useRef} from 'react';
 import {SystemText} from '../assets/strings';
+import {LayerParams} from '../types/types';
 
-export const FirstLayer = (): ReactElement | null => {
+export const Layer = ({
+  title,
+  subtitle,
+  imageDir,
+}: LayerParams): ReactElement | null => {
   return (
     <View style={containerStyles.mainContainer}>
       <View style={containerStyles.headerContainer}>
-        <Text style={textStyles.title}>{SystemText.Title}</Text>
-        <Text style={textStyles.subTitle}>{SystemText.SubTitle}</Text>
+        <Text style={textStyles.title}>{title}</Text>
+        <Text style={textStyles.subTitle}>{subtitle}</Text>
       </View>
-      <Image
-        style={containerStyles.imageContainer}
-        source={require('../assets/logo.png')}
-      />
+      <Image style={containerStyles.imageContainer} source={{uri: imageDir}} />
     </View>
   );
 };
@@ -43,10 +45,10 @@ const containerStyles = StyleSheet.create({
     marginTop: 40,
   },
   imageContainer: {
-    width: 220,
-    height: 200,
-    resizeMode: 'center',
-    marginVertical: 100,
+    width: 315,
+    height: 210,
+    resizeMode: 'contain',
+    marginVertical: 75,
   },
   indicatorContainer: {
     flexDirection: 'row',
