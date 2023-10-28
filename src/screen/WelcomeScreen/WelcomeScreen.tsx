@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect, useRef} from 'react';
+import React, {ReactElement, useEffect, useRef, useState} from 'react';
 import {
   Animated,
   Dimensions,
@@ -14,10 +14,18 @@ export const WelcomeScreen = ({
   route,
   navigation,
 }: WelcomeProps): ReactElement | null => {
+  const [curLayer, setCurLayer] = useState(0);
+
   //* Carousel Page Definition
   const fadeInAnim = useRef(new Animated.Value(0)).current;
+  const fadeInLayer = useRef(new Animated.Value(0)).current;
 
-  const fadeIn = () => {
+  const fadeInInit = () => {
+    Animated.timing(fadeInLayer, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
     Animated.timing(fadeInAnim, {
       toValue: 1,
       delay: 500,
@@ -26,20 +34,23 @@ export const WelcomeScreen = ({
     }).start();
   };
 
+  //* Init.
   useEffect(() => {
-    fadeIn();
+    fadeInInit();
   });
 
   return (
     <View style={containerStyles.mainContainer}>
-      <FirstLayer />
+      <Animated.View style={{opacity: fadeInLayer}}>
+        <FirstLayer />
+      </Animated.View>
       <Animated.View
         style={[containerStyles.footerContainer, {opacity: fadeInAnim}]}>
         <View style={containerStyles.indicatorContainer}>
           {Array.from({length: 4}, (_, idx) => idx).map(idx => (
             <View
               key={`indicator__${idx}`}
-              style={indicatorStyle(idx == 0).indicator}
+              style={indicatorStyle(idx == curLayer).indicator}
             />
           ))}
         </View>
@@ -49,9 +60,13 @@ export const WelcomeScreen = ({
             onPress={() => {
               navigation.replace('LoginMain'); //* Replace: Remove current page for the history
             }}>
-            <Text style={textStyle.tag}>{'이미 알고 있어요!'}</Text>
+            <Text style={textStyle.tag}>{'건너뛰기'}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={containerStyles.buttonContainer}>
+          <TouchableOpacity
+            style={containerStyles.buttonContainer}
+            onPress={() => {
+              setCurLayer((curLayer + 1) % 4);
+            }}>
             <Text style={textStyle.tag}>{'다음'}</Text>
           </TouchableOpacity>
         </View>

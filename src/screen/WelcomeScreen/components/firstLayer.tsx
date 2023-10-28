@@ -1,35 +1,17 @@
-import {Animated, StyleSheet, Text, View} from 'react-native';
+import {Animated, Image, StyleSheet, Text, View} from 'react-native';
 import {WelcomeProps} from '../../../types/navigator';
 import React, {ReactElement, useEffect, useRef} from 'react';
 import {SystemText} from '../assets/strings';
 
 export const FirstLayer = (): ReactElement | null => {
-  const fadeInAnim = useRef(new Animated.Value(0)).current;
-
-  const fadeIn = () => {
-    Animated.timing(fadeInAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  useEffect(() => {
-    fadeIn();
-  });
-
   return (
     <View style={containerStyles.mainContainer}>
       <View style={containerStyles.headerContainer}>
-        <Animated.Text style={[textStyles.title, {opacity: fadeInAnim}]}>
-          {SystemText.Title}
-        </Animated.Text>
-        <Animated.Text style={[textStyles.subTitle, {opacity: fadeInAnim}]}>
-          {SystemText.SubTitle}
-        </Animated.Text>
+        <Text style={textStyles.title}>{SystemText.Title}</Text>
+        <Text style={textStyles.subTitle}>{SystemText.SubTitle}</Text>
       </View>
-      <Animated.Image
-        style={[containerStyles.imageContainer, {opacity: fadeInAnim}]}
+      <Image
+        style={containerStyles.imageContainer}
         source={require('../assets/logo.png')}
       />
     </View>
