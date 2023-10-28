@@ -47,6 +47,7 @@ const textStyles = StyleSheet.create({
   tag: {
     fontSize: 12,
     width: 80,
+    fontFamily: 'Inter',
     textAlign: 'center',
     color: '#737373',
   },

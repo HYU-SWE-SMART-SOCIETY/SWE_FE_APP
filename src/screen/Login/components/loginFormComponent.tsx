@@ -55,5 +55,6 @@ const textStyles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#000000',
+    fontFamily: 'Inter',
   },
 });

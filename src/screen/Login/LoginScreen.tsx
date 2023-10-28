@@ -68,5 +68,6 @@ const textStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     marginBottom: 30,
+    fontFamily: 'Inter',
   },
 });

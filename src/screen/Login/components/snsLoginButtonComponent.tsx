@@ -7,8 +7,14 @@ export const SNSLoginButtonComponent = (): ReactElement | null => {
       style={{
         marginVertical: 15,
       }}>
-      <TouchableOpacity style={buttonStyles.buttonContainer}>
-        <Text style={{fontSize: 10, color: '#000000', fontWeight: 'bold'}}>
+      <TouchableOpacity style={buttonStyles.buttonSetContainer}>
+        <Text
+          style={{
+            fontSize: 10,
+            color: '#000000',
+            fontWeight: 'bold',
+            fontFamily: 'Inter',
+          }}>
           {'SNS 로그인'}
         </Text>
       </TouchableOpacity>
@@ -17,7 +23,7 @@ export const SNSLoginButtonComponent = (): ReactElement | null => {
 };
 
 const buttonStyles = StyleSheet.create({
-  buttonContainer: {
+  buttonSetContainer: {
     display: 'flex',
     width: '100%',
     height: 50,
