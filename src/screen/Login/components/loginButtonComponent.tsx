@@ -7,15 +7,17 @@ export const LoginButtonComponent = (): ReactElement | null => {
       style={{
         marginVertical: 15,
       }}>
-      <TouchableOpacity style={buttonStyles.buttonContainer}>
-        <Text style={{fontSize: 10, color: '#7B7B7B'}}>{'로그인'}</Text>
+      <TouchableOpacity style={buttonStyles.buttonSetContainer}>
+        <Text style={{fontSize: 10, color: '#7B7B7B', fontFamily: 'Inter'}}>
+          {'로그인'}
+        </Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const buttonStyles = StyleSheet.create({
-  buttonContainer: {
+  buttonSetContainer: {
     display: 'flex',
     width: '100%',
     height: 50,
