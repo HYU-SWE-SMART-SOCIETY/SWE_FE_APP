@@ -6,6 +6,7 @@ import {ScreenStackParamList} from '../types/navigator';
 import {GatewayScreen} from '../screen/gateway/gatewayScreen';
 import {DEV_MODE, SKIP_LOGIN} from '../env/modes';
 import {WelcomeScreen} from '../screen/WelcomeScreen/WelcomeScreen';
+import { MainScreen } from '../screen/Mainpage/MainScreen';
 
 const RootStack = createNativeStackNavigator<ScreenStackParamList>();
 
@@ -22,6 +23,9 @@ export const RootNavigator = (): ReactElement | null => {
           </RootStack.Group>
           <RootStack.Group>
             <RootStack.Screen name={'LoginMain'} component={LoginScreen} />
+          </RootStack.Group>
+          <RootStack.Group>
+            <RootStack.Screen name={'Main'} component={MainScreen} />
           </RootStack.Group>
         </>
       </RootStack.Navigator>
