@@ -26,6 +26,13 @@ export const GatewayScreen = ({
         }}>
         <Text style={styles.tag}>Move To Login Screen</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Main');
+        }}>
+        <Text style={styles.tag}>Move To Main Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 };

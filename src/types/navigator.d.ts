@@ -23,3 +23,8 @@ export type LoginMainProps = NativeStackScreenProps<
   ScreenStackParamList,
   'LoginMain'
 >;
+
+export type MainProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'Main'
+>;
