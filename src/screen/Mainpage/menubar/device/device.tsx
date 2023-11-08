@@ -1,18 +1,30 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image} from 'react-native';
 
-export const Adddevice = (): ReactElement | null => {
+export const Device = (): ReactElement | null => {
   return (
     <View>
       <TouchableOpacity style={componentStyles.buttonSetContainer}>
+        <Image
+          style={{
+            width: 45,
+            height: 45,
+            marginLeft: 10,
+            marginBottom: 3,
+            alignContent: 'center',
+          }}
+          source={require('./device.png')}
+        />
         <Text
           style={{
-            fontSize: 10,
+            fontSize: 13,
             color: '#000000',
-            marginStart: 13,
+            marginStart: 10,
             fontFamily: 'Inter',
+            marginBottom: 5,
           }}>
-          기기 추가
+          기기 설정
         </Text>
       </TouchableOpacity>
     </View>
@@ -22,13 +34,8 @@ export const Adddevice = (): ReactElement | null => {
 const componentStyles = StyleSheet.create({
   buttonSetContainer: {
     display: 'flex',
-    justifyContent: 'center',
-    width: 65,
-    height: 25,
-    borderColor: '#AEADAD',
-    borderRadius: 20,
-    borderWidth: 1,
-    backgroundColor: 'white',
+    justifyContent: 'flex-end',
     alignContent: 'center',
+    position: 'relative',
   },
 });

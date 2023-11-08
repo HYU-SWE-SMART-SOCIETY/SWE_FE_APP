@@ -13,12 +13,16 @@ export const RoomSettingButton = (): ReactElement | null => {
 const componentStyles = StyleSheet.create({
   buttonSetContainer: {
     display: 'flex',
-    width: 10,
-    height: 10,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderTopWidth: 7.5,
     borderStyle: 'solid',
-    borderColor: '#FFFFFF',
-    backgroundColor: '#FFFFFF',
-    marginLeft: 7,
-    marginBottom: 2,
+    backgroundColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderTopColor: 'white',
+    marginLeft: 15,
   },
 });
