@@ -1,12 +1,12 @@
 import React, {ReactElement} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginScreen} from '../screen/Login/LoginScreen';
+import {LoginScreen} from '../screen/Login/ui/LoginScreen';
 import {ScreenStackParamList} from '../types/navigator';
 import {GatewayScreen} from '../screen/gateway/gatewayScreen';
 import {DEV_MODE, SKIP_LOGIN} from '../env/modes';
-import {WelcomeScreen} from '../screen/WelcomeScreen/WelcomeScreen';
-import { MainScreen } from '../screen/Mainpage/MainScreen';
+import {WelcomeScreen} from '../screen/WelcomeScreen/ui/WelcomeScreen';
+import {MainScreen} from '../screen/Mainpage/MainScreen';
 
 const RootStack = createNativeStackNavigator<ScreenStackParamList>();
 

@@ -1,8 +1,8 @@
 import {Animated, Image, StyleSheet, Text, View} from 'react-native';
-import {WelcomeProps} from '../../../types/navigator';
+import {WelcomeProps} from '../../../../types/navigator';
 import React, {ReactElement, useEffect, useRef} from 'react';
 import {SystemText} from '../assets/strings';
-import {LayerParams} from '../types/types';
+import {LayerParams} from '../../types/types';
 
 export const Layer = ({
   title,
