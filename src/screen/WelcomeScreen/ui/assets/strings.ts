@@ -6,5 +6,5 @@ export const SystemText = {
   ThirdLayerTitle: "새로운 장소에 가도 '편리하게'",
   ThirdLayerSubTitle: 'QR코드 인식 한번에, 우리 집을 그대로',
   FinalLayerTitle: '지금 당장 시작해보세요',
-  FinalLayerSubTitle: '아무말',
+  FinalLayerSubTitle: 'HOLME과 함께하는\n똑똑하고 편리한 스마트홈 생활!',
 };

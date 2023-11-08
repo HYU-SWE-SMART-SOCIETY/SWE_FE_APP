@@ -1,8 +1,12 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {LoginSystemText} from '../assets/strings';
+import {LoginFormParams} from '../../types/types';
 
-export const LoginFormComponent = (): ReactElement | null => {
+export const LoginFormComponent = ({
+  setIdent,
+  setPw,
+}: LoginFormParams): ReactElement | null => {
   return (
     <View style={componentStyles.componentContainer}>
       <View style={componentStyles.formContainer}>
@@ -11,6 +15,7 @@ export const LoginFormComponent = (): ReactElement | null => {
           style={componentStyles.inputContainer}
           placeholder={LoginSystemText.PlaceHolder_ID}
           placeholderTextColor={'#A19B9B'}
+          onChangeText={setIdent}
         />
       </View>
       <View style={componentStyles.formContainer}>
@@ -21,6 +26,7 @@ export const LoginFormComponent = (): ReactElement | null => {
           secureTextEntry={true}
           placeholder={LoginSystemText.PlaceHolder_PW}
           placeholderTextColor={'#A19B9B'}
+          onChangeText={setPw}
         />
       </View>
     </View>
