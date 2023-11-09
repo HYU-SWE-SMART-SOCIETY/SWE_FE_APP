@@ -1,12 +1,14 @@
 import React, {ReactElement} from 'react';
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {LoginInfoParams} from '../../types/types';
-import {checkIfRequiredFieldFilled} from '../../logic/loginLogics';
+import {checkIfRequiredFieldFilled, handleLogin} from '../../logic/loginLogics';
 import {sendLoginRequest} from '../../api/sendLoginRequest';
 
 export const LoginButtonComponent = ({
   ident,
   pw,
+  setLogin,
+  setUser,
 }: LoginInfoParams): ReactElement | null => {
   return (
     <View
@@ -21,8 +23,19 @@ export const LoginButtonComponent = ({
               '아이디 혹은 비밀번호가 입력되지 않았습니다.',
             );
           } else {
-            sendLoginRequest({enteredID: ident, enteredPW: pw}).then(r => {
-              console.log(r);
+            sendLoginRequest({enteredID: ident, enteredPW: pw}).then(res => {
+              if (!res.ok)
+                Alert.alert(
+                  'FATAL ERROR!',
+                  'Something Gone Wrong! ' + res.error,
+                );
+              else if (!res.login)
+                Alert.alert('Login Failed!', '해당 유저가 존재하지 않습니다.');
+              else {
+                handleLogin(setUser, res.payload?.data).then(() => {
+                  setLogin(true);
+                });
+              }
             });
           }
         }}

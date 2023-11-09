@@ -24,11 +24,7 @@ export const RootNavigator = (): ReactElement | null => {
           <RootStack.Screen name={'Gateway'} component={GatewayScreen} />
           <RootStack.Group>
             <RootStack.Screen name={'WelcomeMain'} component={WelcomeScreen} />
-          </RootStack.Group>
-          <RootStack.Group>
             <RootStack.Screen name={'LoginMain'} component={LoginScreen} />
-          </RootStack.Group>
-          <RootStack.Group>
             <RootStack.Screen name={'Main'} component={MainScreen} />
             <RootStack.Screen name={'Accontrol'} component={AccontrolScreen} />
             <RootStack.Screen name={'QR'} component={QRCodeScanner} />
