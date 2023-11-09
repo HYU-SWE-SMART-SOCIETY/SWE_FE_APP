@@ -5,7 +5,9 @@ import {Image} from 'react-native';
 export const Ac = (): ReactElement | null => {
   return (
     <View>
-      <TouchableOpacity style={componentStyles.buttonSetContainer}>
+      <TouchableOpacity
+        style={componentStyles.buttonSetContainer}
+        onPress={() => {}}>
         <View style={componentStyles.imageContainer2}>
           <Image
             style={{

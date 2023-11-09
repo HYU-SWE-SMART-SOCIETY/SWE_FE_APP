@@ -4,8 +4,8 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 export const RoomSettingButton = (): ReactElement | null => {
   return (
     <View>
-      <TouchableOpacity style={componentStyles.buttonSetContainer}>
-      </TouchableOpacity>
+      <TouchableOpacity
+        style={componentStyles.buttonSetContainer}></TouchableOpacity>
     </View>
   );
 };
@@ -13,8 +13,8 @@ export const RoomSettingButton = (): ReactElement | null => {
 const componentStyles = StyleSheet.create({
   buttonSetContainer: {
     display: 'flex',
-    width: 0,
-    height: 0,
+    width: 10,
+    height: 10,
     borderLeftWidth: 5,
     borderRightWidth: 5,
     borderTopWidth: 7.5,

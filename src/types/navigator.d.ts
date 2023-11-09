@@ -6,6 +6,10 @@ export type ScreenStackParamList = {
   Gateway: undefined;
   WelcomeMain: undefined;
   LoginMain: undefined;
+  Main: undefined;
+  QR: undefined;
+  Add: undefined;
+  Accontrol: undefined;
 };
 
 //* ScreenProps
@@ -26,4 +30,9 @@ export type LoginMainProps = NativeStackScreenProps<
 
 export type MainProps = NativeStackScreenProps<ScreenStackParamList, 'Main'>;
 
-export type MenuProps = NativeStackScreenProps<ScreenStackParamList, 'Menu'>;
+export type AddProps = NativeStackScreenProps<ScreenStackParamList, 'Add'>;
+
+export type AccontrolProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'Accontrol'
+>;
