@@ -1,19 +1,31 @@
-import React, {ReactElement, useState} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {LanguageButton} from './components/languageButton';
 import {LoginFormComponent} from './components/loginFormComponent';
 import {LoginButtonComponent} from './components/loginButtonComponent';
 import {AccountUtilsComponent} from './components/accountUtilsComponent';
 import {SNSLoginButtonComponent} from './components/snsLoginButtonComponent';
-import {LoginMainProps} from '../../../types/navigator';
+import {LoginMainProps} from '../../../types/props';
 import {LoginSystemText} from './assets/strings';
+import {User} from '../../../types/entity/user';
 
 export const LoginScreen = ({
   route,
   navigation,
-}: LoginMainProps | null): ReactElement | null => {
+}: LoginMainProps): ReactElement | null => {
   const [ident, setIdent] = useState('');
   const [pw, setPw] = useState('');
+  const [user, setUser] = useState<User | null>(null);
+  const [login, setLogin] = useState(false);
+
+  useEffect(() => {
+    //* Handle Logged In
+    if (login) {
+      //* Navigate to next screen
+      navigation.navigate('Main', {user});
+      setLogin(false);
+    }
+  }, [login]);
 
   return (
     <SafeAreaView>
@@ -24,7 +36,12 @@ export const LoginScreen = ({
         <View style={containerStyles.bodyContainer}>
           <Text style={textStyles.title}>{LoginSystemText.AppName}</Text>
           <LoginFormComponent setIdent={setIdent} setPw={setPw} />
-          <LoginButtonComponent ident={ident.trim()} pw={pw.trim()} />
+          <LoginButtonComponent
+            ident={ident.trim()}
+            pw={pw.trim()}
+            setLogin={setLogin}
+            setUser={setUser}
+          />
           <AccountUtilsComponent />
           <View
             style={{

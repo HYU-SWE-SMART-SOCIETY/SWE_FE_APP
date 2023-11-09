@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {WelcomeProps} from '../../../types/navigator';
+import {WelcomeProps} from '../../../types/props';
 import {Layer} from './components/Layer';
 import {SystemText} from './assets/strings';
 

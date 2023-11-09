@@ -11,13 +11,20 @@ export const sendLoginRequest = async (
 
     //TODO!! IMPORTANT: Need to hide the url in production!
     const res = await axios.post('http://localhost:11000/api/v1/signin/', data);
-    console.log(res);
+
+    return {
+      ok: true,
+      login: res.data.ok, //* Defines if current login is okay or not.
+      payload: res.data,
+      error: null,
+    };
   } catch (e: any) {
-    console.error('Error while sending login request! ' + e.toString());
+    console.error('Error while sending login request! ' + e.message);
     return {
       ok: false,
+      login: false,
+      payload: null,
       error: e.toString(),
     };
   }
-  return {ok: true, error: null};
 };

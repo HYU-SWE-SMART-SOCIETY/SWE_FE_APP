@@ -1,6 +1,13 @@
-import React, {ReactElement} from 'react';
-import {SafeAreaView, StyleSheet, Text, View, ScrollView} from 'react-native';
-import {MainProps} from '../../types/navigator';
+import React, {ReactElement, useEffect, useState} from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  ToastAndroid,
+} from 'react-native';
+import {MainProps} from '../../types/props';
 import {Adddevice} from './components/buttons/adddeviceButton';
 import {RoomSettingButton} from './components/buttons/roomSettingButton';
 import {Tv} from './components/devices/tv/tv';
@@ -14,11 +21,35 @@ import {Wakeup} from './components/routines/wakeup/wakeup';
 import {Cleaning} from './components/routines/cleaning/cleaning';
 import {Training} from './components/routines/training/training';
 import {Menubar} from './menubar/menubar';
+import {User} from '../../types/entity/user';
 
-export const MainScreen = ({
+export const MainScreen: React.FC<MainProps> = ({
   route,
   navigation,
-}: MainProps | null): ReactElement | null => {
+}: MainProps): ReactElement | null => {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (user != route.params?.user) {
+      //* Update User Info
+      setUser(route.params?.user);
+    }
+  }, [route.params?.user]);
+
+  useEffect(() => {
+    //* User Changed
+    if (user !== null) {
+      const {name} = user;
+
+      //* Android Toast
+      ToastAndroid.showWithGravity(
+        `${name} 님, 환영합니다.`,
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
+    }
+  }, [user]);
+
   return (
     <SafeAreaView>
       <View style={containerStyles.headerContainer}>
