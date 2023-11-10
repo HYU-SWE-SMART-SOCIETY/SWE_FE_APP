@@ -1,13 +1,17 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Image} from 'react-native';
+import {AccontrolProps} from '../../../../../types/navigator';
 
-export const Ac = (): ReactElement | null => {
+export const Ac = ({
+  route,
+  navigation,
+}: AccontrolProps): ReactElement | null => {
   return (
     <View>
       <TouchableOpacity
         style={componentStyles.buttonSetContainer}
-        onPress={() => {}}>
+        onPress={() => navigation.navigate('Accontrol')}>
         <View style={componentStyles.imageContainer2}>
           <Image
             style={{

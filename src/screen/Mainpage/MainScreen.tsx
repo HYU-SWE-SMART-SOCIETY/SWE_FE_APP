@@ -42,7 +42,7 @@ export const MainScreen = ({
             <Water />
           </View>
           <View style={styles.buttonContainer}>
-            <Ac />
+            <Ac route={route} navigation={navigation} />
           </View>
           <Image
             style={styles.lineImage}

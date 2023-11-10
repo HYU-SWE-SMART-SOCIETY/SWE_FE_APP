@@ -7,7 +7,7 @@ import {GatewayScreen} from '../screen/gateway/gatewayScreen';
 import {DEV_MODE, SKIP_LOGIN} from '../env/modes';
 import {WelcomeScreen} from '../screen/WelcomeScreen/WelcomeScreen';
 import {MainScreen} from '../screen/Mainpage/MainScreen';
-import {AccontrolScreen} from '../screen/Mainpage/components/devices/ac/accontrol';
+import {AccontrolScreen} from '../screen/Mainpage/components/devices/ac/accontrol/accontrol';
 import QRCodeScanner from '../screen/Mainpage/QRCodeScanner';
 import {Adddevice} from '../screen/Mainpage/components/buttons/adddeviceButton';
 
