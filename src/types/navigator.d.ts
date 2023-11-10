@@ -10,4 +10,32 @@ export type ScreenStackParamList = {
   Main: {
     user: User | null; //* Logged In User
   };
+  QR: undefined;
+  Add: undefined;
+  Accontrol: undefined;
 };
+
+//* ScreenProps
+export type GatewayProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'Gateway'
+>;
+
+export type WelcomeProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'WelcomeMain'
+>;
+
+export type LoginMainProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'LoginMain'
+>;
+
+export type MainProps = NativeStackScreenProps<ScreenStackParamList, 'Main'>;
+
+export type AddProps = NativeStackScreenProps<ScreenStackParamList, 'Add'>;
+
+export type AccontrolProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'Accontrol'
+>;

@@ -1,6 +1,5 @@
 import React, {ReactElement} from 'react';
 import {SafeAreaView, StyleSheet, Text, View, ScrollView} from 'react-native';
-import {MenuProps} from '../../../types/navigator';
 import {Device} from './device/device';
 import {Routine} from './routine/routine';
 import {Holme} from './Holme/holme';
@@ -8,16 +7,13 @@ import {Report} from './report/report';
 import {Myhome} from './myhome/myhome';
 import {Image} from 'react-native';
 
-export const Menubar = ({
-  route,
-  navigation,
-}: MenuProps | null): ReactElement | null => {
+export const Menubar = (): ReactElement | null => {
   return (
     <SafeAreaView>
       <View style={containerStyles.bottomContainer}>
         <Image
           style={{
-            width: 400,
+            width: 600,
             height: 2,
           }}
           source={require('./Line.png')}

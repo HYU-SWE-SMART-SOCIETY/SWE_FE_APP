@@ -5,6 +5,10 @@ import {LoginScreen} from '../screen/Login/ui/LoginScreen';
 import {ScreenStackParamList} from '../types/navigator';
 import {GatewayScreen} from '../screen/gateway/gatewayScreen';
 import {DEV_MODE, SKIP_LOGIN} from '../env/modes';
+
+import {AccontrolScreen} from '../screen/Mainpage/components/devices/ac/accontrol';
+import QRCodeScanner from '../screen/Mainpage/QRCodeScanner';
+import {Adddevice} from '../screen/Mainpage/components/buttons/adddeviceButton';
 import {WelcomeScreen} from '../screen/WelcomeScreen/ui/WelcomeScreen';
 import {MainScreen} from '../screen/Mainpage/MainScreen';
 
@@ -22,6 +26,8 @@ export const RootNavigator = (): ReactElement | null => {
             <RootStack.Screen name={'WelcomeMain'} component={WelcomeScreen} />
             <RootStack.Screen name={'LoginMain'} component={LoginScreen} />
             <RootStack.Screen name={'Main'} component={MainScreen} />
+            <RootStack.Screen name={'Accontrol'} component={AccontrolScreen} />
+            <RootStack.Screen name={'QR'} component={QRCodeScanner} />
           </RootStack.Group>
         </>
       </RootStack.Navigator>

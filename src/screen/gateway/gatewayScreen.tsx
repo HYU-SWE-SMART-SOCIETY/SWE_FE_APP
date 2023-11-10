@@ -33,6 +33,20 @@ export const GatewayScreen = ({
         }}>
         <Text style={styles.tag}>Move To Main Screen</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Accontrol');
+        }}>
+        <Text style={styles.tag}>Move To Accontrol Screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('QR');
+        }}>
+        <Text style={styles.tag}>Move To QR code scanner</Text>
+      </TouchableOpacity>
     </View>
   );
 };

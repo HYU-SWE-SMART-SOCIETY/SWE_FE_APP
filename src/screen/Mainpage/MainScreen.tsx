@@ -51,51 +51,36 @@ export const MainScreen: React.FC<MainProps> = ({
   }, [user]);
 
   return (
-    <SafeAreaView>
-      <View style={containerStyles.headerContainer}>
-        <Text style={textStyles.title}>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.headerContainer}>
+        <Text style={styles.title}>
           자취방
           <RoomSettingButton />
         </Text>
-        <View style={containerStyles.headerContainer2}>
-          <Adddevice />
+        <View style={styles.headerContainer2}>
+          <Adddevice route={route} navigation={navigation} />
         </View>
       </View>
       <ScrollView>
-        <View style={containerStyles.mainContainer}>
-          <View style={containerStyles.bodyContainer}>
-            <Text style={textStyles.main}>공간에 연결된 기기</Text>
-            <View style={containerStyles.buttonContainer}>
-              <Tv />
-              <Blind />
-            </View>
-            <View style={containerStyles.buttonContainer}>
-              <Speaker />
-              <Water />
-            </View>
-            <View style={containerStyles.buttonContainer}>
-              <Ac />
-            </View>
+        <View>
+          <Text style={styles.main}>공간에 연결된 기기</Text>
+          <View style={styles.buttonContainer}>
+            <Tv />
+            <Blind />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Speaker />
+            <Water />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Ac />
           </View>
           <Image
-            style={{
-              alignSelf: 'center',
-              width: 300,
-            }}
+            style={styles.lineImage}
             source={require('./assets/Line.png')}
           />
-          <Text
-            style={{
-              fontSize: 11,
-              fontWeight: 'normal',
-              color: '#000000',
-              marginLeft: 28,
-              position: 'relative',
-              marginTop: 25,
-            }}>
-            가능한 루틴들
-          </Text>
-          <View style={containerStyles.buttonContainer2}>
+          <Text style={styles.routinesTitle}>가능한 루틴들</Text>
+          <View style={styles.buttonContainer2}>
             <Sleep />
             <Wakeup />
             <Cleaning />
@@ -103,77 +88,70 @@ export const MainScreen: React.FC<MainProps> = ({
           </View>
         </View>
       </ScrollView>
-      <View style={containerStyles.bottomContainer}>
+      <View style={styles.bottomContainer}>
         <Menubar />
       </View>
     </SafeAreaView>
   );
 };
 
-const containerStyles = StyleSheet.create({
-  mainContainer: {
-    display: 'flex',
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
     backgroundColor: 'white',
-    //TODO: Add adjustment
   },
   headerContainer: {
-    display: 'flex',
-    width: '100%',
-    height: 110,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     backgroundColor: '#C85858',
     borderBottomStartRadius: 30,
     borderBottomEndRadius: 30,
-    //TODO: Add adjustment
-  },
-  bodyContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    justifyContent: 'center',
-    marginTop: 25,
+    padding: 35,
+    alignItems: 'center',
+    height: 120,
   },
   headerContainer2: {
-    display: 'flex',
-    height: 20,
-    position: 'absolute',
-    marginLeft: 270,
-    marginTop: 77,
-  },
-  buttonContainer: {
-    flexDirection: 'row', // Arrange items in a row
-    justifyContent: 'space-around', // Add space between the buttons
-    margin: 10,
-  },
-  buttonContainer2: {
-    flexDirection: 'row', // Arrange items in a row
-    justifyContent: 'space-around', // Add space between the buttons
-    margin: 10,
-    marginTop: 25,
-    marginHorizontal: 15,
-  },
-  bottomContainer: {
-    display: 'flex',
-    width: '100%',
-    height: '25%',
-    backgroundColor: '#FFFFFF',
-    padding: 0,
-  },
-});
-
-const textStyles = StyleSheet.create({
-  title: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    fontFamily: 'Inter',
-    textAlign: 'left',
-    padding: 40,
+    position: 'relative',
+    right: -20,
+    top: 35,
   },
   main: {
     fontSize: 11,
     fontWeight: 'normal',
     color: '#000000',
     marginLeft: 28,
-    position: 'relative',
+    marginTop: 25,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    margin: 10,
+  },
+  lineImage: {
+    alignSelf: 'center',
+    width: 300,
+  },
+  routinesTitle: {
+    fontSize: 11,
+    fontWeight: 'normal',
+    color: '#000000',
+    marginLeft: 28,
+    marginTop: 25,
+  },
+  buttonContainer2: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: 10,
+    marginHorizontal: 15,
+  },
+  bottomContainer: {
+    backgroundColor: '#FFFFFF',
+    height: '15%',
+  },
+  title: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    fontFamily: 'Inter',
   },
 });
