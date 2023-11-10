@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SKIP_LOGIN} from '../../env/modes';
-import {GatewayProps} from '../../types/navigator';
+import {GatewayProps} from '../../types/props';
 
 export const GatewayScreen = ({
   route,
@@ -32,6 +32,20 @@ export const GatewayScreen = ({
           navigation.navigate('Main');
         }}>
         <Text style={styles.tag}>Move To Main Screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Accontrol');
+        }}>
+        <Text style={styles.tag}>Move To Accontrol Screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('QR');
+        }}>
+        <Text style={styles.tag}>Move To QR code scanner</Text>
       </TouchableOpacity>
     </View>
   );
