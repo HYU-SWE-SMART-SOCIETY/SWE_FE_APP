@@ -20,3 +20,10 @@ export type LoginMainProps = NativeStackScreenProps<
 export type MainProps = NativeStackScreenProps<ScreenStackParamList, 'Main'>;
 
 export type MenuProps = NativeStackScreenProps<ScreenStackParamList, 'Menu'>;
+
+export type AddProps = NativeStackScreenProps<ScreenStackParamList, 'Add'>;
+
+export type AccontrolProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'Accontrol'
+>;

@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {SafeAreaView, StyleSheet, Text, View, ScrollView} from 'react-native';
-import {AccontrolProps} from '../../../../../types/navigator';
+import {AccontrolProps} from '../../../../../types/props';
 
 export const AccontrolScreen = ({
   route,
