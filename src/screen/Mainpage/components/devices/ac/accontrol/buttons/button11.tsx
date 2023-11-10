@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export const Button3 = (): ReactElement | null => {
+export const Button11 = (): ReactElement | null => {
   return (
     <View>
       <TouchableOpacity style={componentStyles.buttonSetContainer}>
@@ -12,16 +12,7 @@ export const Button3 = (): ReactElement | null => {
             fontFamily: 'Inter',
             textAlign: 'center',
           }}>
-          간접
-        </Text>
-        <Text
-          style={{
-            fontSize: 11,
-            color: '#000000',
-            fontFamily: 'Inter',
-            textAlign: 'center',
-          }}>
-          바람
+          자동 건조
         </Text>
       </TouchableOpacity>
     </View>
@@ -31,10 +22,9 @@ export const Button3 = (): ReactElement | null => {
 const componentStyles = StyleSheet.create({
   buttonSetContainer: {
     display: 'flex',
-    width: 52,
-    height: 52,
+    width: 72.81,
+    height: 45.06,
     borderColor: '#D9D9D9',
-    borderRadius: 26,
     borderWidth: 1,
     backgroundColor: '#D9D9D9',
     alignContent: 'center',

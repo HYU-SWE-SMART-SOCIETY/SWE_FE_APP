@@ -13,6 +13,20 @@ import {Button1} from './buttons/button1';
 import {Button2} from './buttons/button2';
 import {Off} from './buttons/off';
 import {Button3} from './buttons/button3';
+import {Button4} from './buttons/button4';
+import {Temup} from './buttons/temup';
+import {Button5} from './buttons/button5';
+import {Button6} from './buttons/button6';
+import {Temdown} from './buttons/temdown';
+import {Button7} from './buttons/button7';
+import {Button8} from './buttons/button8';
+import {Button9} from './buttons/button9';
+import {Button10} from './buttons/button10';
+import {Button11} from './buttons/button11';
+import {Button12} from './buttons/button12';
+import {Button14} from './buttons/button14';
+import {Button15} from './buttons/button15';
+import {Button13} from './buttons/button13';
 
 export const AccontrolScreen = ({
   route,
@@ -73,6 +87,39 @@ export const AccontrolScreen = ({
         </View>
         <View style={styles.buttonContainer}>
           <Button3 />
+          <Temup />
+          <Button4 />
+        </View>
+        <Text
+          style={{
+            fontSize: 11,
+            textAlign: 'center',
+            color: 'black',
+            top: 407,
+            alignSelf: 'center',
+            position: 'absolute',
+          }}>
+          온도 조절
+        </Text>
+        <View style={styles.buttonContainer}>
+          <Button5 />
+          <Temdown />
+          <Button6 />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button7 />
+          <Button8 />
+          <Button9 />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button10 />
+          <Button11 />
+          <Button12 />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button13 />
+          <Button14 />
+          <Button15 />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -111,11 +158,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  lineImage: {
-    alignSelf: 'center',
-    width: 300,
+    justifyContent: 'space-around',
+    marginVertical: 10,
+    marginHorizontal: 40,
   },
   temperatureStatus: {
     fontSize: 14,
@@ -134,12 +179,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     color: '#000000',
-  },
-  buttonContainer2: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    margin: 10,
-    marginHorizontal: 15,
   },
   title: {
     fontSize: 17,

@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export const Button3 = (): ReactElement | null => {
+export const Button6 = (): ReactElement | null => {
   return (
     <View>
       <TouchableOpacity style={componentStyles.buttonSetContainer}>
@@ -12,16 +12,7 @@ export const Button3 = (): ReactElement | null => {
             fontFamily: 'Inter',
             textAlign: 'center',
           }}>
-          간접
-        </Text>
-        <Text
-          style={{
-            fontSize: 11,
-            color: '#000000',
-            fontFamily: 'Inter',
-            textAlign: 'center',
-          }}>
-          바람
+          쿨파워
         </Text>
       </TouchableOpacity>
     </View>
