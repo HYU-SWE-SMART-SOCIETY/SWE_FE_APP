@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import QRCodeScanner from '../../QRCodeScanner';
-import {AddProps} from '../../../../types/navigator';
+import {AddProps} from '../../../../types/props';
 
 export const Adddevice = ({
   route,

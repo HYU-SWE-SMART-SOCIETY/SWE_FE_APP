@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SKIP_LOGIN} from '../../env/modes';
-import {GatewayProps} from '../../types/navigator';
+import {GatewayProps} from '../../types/props';
 
 export const GatewayScreen = ({
   route,
