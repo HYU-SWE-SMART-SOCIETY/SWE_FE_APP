@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, RefObject} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from '../screen/Login/ui/LoginScreen';
@@ -11,12 +11,13 @@ import QRCodeScanner from '../screen/Mainpage/QRCodeScanner';
 import {Adddevice} from '../screen/Mainpage/components/buttons/adddeviceButton';
 import {WelcomeScreen} from '../screen/WelcomeScreen/ui/WelcomeScreen';
 import {MainScreen} from '../screen/Mainpage/MainScreen';
+import {deepLinkingConfig} from '../link/deepLinkingConfig';
 
 const RootStack = createNativeStackNavigator<ScreenStackParamList>();
 
 export const RootNavigator = (): ReactElement | null => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={deepLinkingConfig}>
       <RootStack.Navigator
         initialRouteName={'Gateway'}
         screenOptions={{headerShown: false}}>

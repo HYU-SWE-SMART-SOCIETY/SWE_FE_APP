@@ -2,17 +2,14 @@ import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export const RoomSettingButton = (): ReactElement | null => {
-  return (
-    <View>
-      <TouchableOpacity
-        style={componentStyles.buttonSetContainer}></TouchableOpacity>
-    </View>
-  );
+  return <View style={componentStyles.buttonSetContainer}></View>;
 };
 
 const componentStyles = StyleSheet.create({
   buttonSetContainer: {
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
     width: 10,
     height: 10,
     borderLeftWidth: 5,
