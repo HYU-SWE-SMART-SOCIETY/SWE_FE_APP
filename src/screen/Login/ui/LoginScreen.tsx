@@ -22,7 +22,7 @@ export const LoginScreen = ({
     //* Handle Logged In
     if (login) {
       //* Navigate to next screen
-      navigation.navigate('Main', {user});
+      navigation.navigate('Main', {user, cmdFlag: 0});
       setLogin(false);
     }
   }, [login]);

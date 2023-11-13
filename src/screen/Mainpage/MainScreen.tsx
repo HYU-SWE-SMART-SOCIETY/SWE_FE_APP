@@ -30,6 +30,10 @@ export const MainScreen: React.FC<MainProps> = ({
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    console.log(route.params?.cmdFlag);
+  }, [route?.params?.cmdFlag]);
+
+  useEffect(() => {
     if (user != route.params?.user) {
       //* Update User Info
       setUser(route.params?.user);

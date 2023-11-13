@@ -9,6 +9,7 @@ export type ScreenStackParamList = {
   LoginMain: undefined;
   Main: {
     user: User | null; //* Logged In User
+    cmdFlag: number;
   };
   QR: undefined;
   Add: undefined;

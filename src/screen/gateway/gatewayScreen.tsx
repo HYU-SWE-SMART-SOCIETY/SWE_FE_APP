@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SKIP_LOGIN} from '../../env/modes';
 import {GatewayProps} from '../../types/props';
 
@@ -29,7 +29,7 @@ export const GatewayScreen = ({
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('Main');
+          navigation.navigate('Main', {user: null, cmdFlag: 0});
         }}>
         <Text style={styles.tag}>Move To Main Screen</Text>
       </TouchableOpacity>
@@ -46,6 +46,13 @@ export const GatewayScreen = ({
           navigation.navigate('QR');
         }}>
         <Text style={styles.tag}>Move To QR code scanner</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          Linking.openURL('holme://main?cmdFlag=1'); //* This will open the under modal
+        }}>
+        <Text style={styles.tag}>Deep Link Test - Main</Text>
       </TouchableOpacity>
     </View>
   );
