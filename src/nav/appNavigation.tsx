@@ -6,7 +6,7 @@ import {ScreenStackParamList} from '../types/navigator';
 import {GatewayScreen} from '../screen/gateway/gatewayScreen';
 import {DEV_MODE, SKIP_LOGIN} from '../env/modes';
 
-import {AccontrolScreen} from '../screen/Mainpage/components/devices/ac/accontrol';
+import {AccontrolScreen} from '../screen/Mainpage/components/devices/ac/accontrol/accontrol';
 import QRCodeScanner from '../screen/Mainpage/QRCodeScanner';
 import {Adddevice} from '../screen/Mainpage/components/buttons/adddeviceButton';
 import {WelcomeScreen} from '../screen/WelcomeScreen/ui/WelcomeScreen';

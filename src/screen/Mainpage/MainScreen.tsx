@@ -73,7 +73,7 @@ export const MainScreen: React.FC<MainProps> = ({
             <Water />
           </View>
           <View style={styles.buttonContainer}>
-            <Ac />
+            <Ac route={route} navigation={navigation} />
           </View>
           <Image
             style={styles.lineImage}
