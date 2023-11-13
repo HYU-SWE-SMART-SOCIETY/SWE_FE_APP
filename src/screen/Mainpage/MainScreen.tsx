@@ -6,6 +6,7 @@ import {
   View,
   ScrollView,
   ToastAndroid,
+  TouchableOpacity,
 } from 'react-native';
 import {MainProps} from '../../types/props';
 import {Adddevice} from './components/buttons/adddeviceButton';
@@ -22,12 +23,16 @@ import {Cleaning} from './components/routines/cleaning/cleaning';
 import {Training} from './components/routines/training/training';
 import {Menubar} from './menubar/menubar';
 import {User} from '../../types/entity/user';
+import {BottomSheet} from './components/modals/BottomSheet';
 
 export const MainScreen: React.FC<MainProps> = ({
   route,
   navigation,
 }: MainProps): ReactElement | null => {
   const [user, setUser] = useState<User | null>(null);
+  const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
+
+  const openSyncSetting = () => setBottomSheetVisible(true);
 
   useEffect(() => {
     console.log(route.params?.cmdFlag);
@@ -54,13 +59,28 @@ export const MainScreen: React.FC<MainProps> = ({
     }
   }, [user]);
 
+  useEffect(() => {
+    if (route.params?.cmdFlag == 1) {
+      //* CMD: Open Modal while enter
+      setBottomSheetVisible(true);
+    }
+  }, [route.params?.cmdFlag]);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>
-          자취방
+        <TouchableOpacity
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: 70,
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}
+          onPress={openSyncSetting}>
+          <Text style={styles.title}>자취방</Text>
           <RoomSettingButton />
-        </Text>
+        </TouchableOpacity>
         <View style={styles.headerContainer2}>
           <Adddevice route={route} navigation={navigation} />
         </View>
@@ -95,6 +115,10 @@ export const MainScreen: React.FC<MainProps> = ({
       <View style={styles.bottomContainer}>
         <Menubar />
       </View>
+      <BottomSheet
+        bottomSheetVisible={bottomSheetVisible}
+        setBottomSheetVisible={setBottomSheetVisible}
+      />
     </SafeAreaView>
   );
 };
