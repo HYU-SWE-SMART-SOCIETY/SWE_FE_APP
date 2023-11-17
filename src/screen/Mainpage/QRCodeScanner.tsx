@@ -4,8 +4,8 @@ import {
   Button,
   Dimensions,
   StyleSheet,
-  //Vibration,
   View,
+  Linking,
 } from 'react-native';
 import {Camera, CameraType} from 'react-native-camera-kit';
 
@@ -21,10 +21,7 @@ const QRCodeScanner = () => {
   const onBarCodeRead = (event: any) => {
     if (!scaned) return;
     setScaned(false);
-    //Vibration.vibrate();
-    Alert.alert('QR Code', event.nativeEvent.codeStringValue, [
-      {text: 'OK', onPress: () => setScaned(true)},
-    ]);
+    Linking.openURL(event.nativeEvent.codeStringValue);
   };
 
   return (
@@ -33,8 +30,6 @@ const QRCodeScanner = () => {
         style={styles.scanner}
         ref={ref}
         cameraType={CameraType.Back} // Front/Back(default)
-        //zoomMode
-        //focusMode
         // Barcode Scanner Props
         scanBarcode
         showFrame={false}

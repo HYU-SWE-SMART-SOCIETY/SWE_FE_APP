@@ -54,6 +54,13 @@ export const GatewayScreen = ({
         }}>
         <Text style={styles.tag}>Deep Link Test - Main</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Main2', {user: null, cmdFlag: 0});
+        }}>
+        <Text style={styles.tag}>Move To Main2 Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 };

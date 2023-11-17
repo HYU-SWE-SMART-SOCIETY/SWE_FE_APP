@@ -12,6 +12,8 @@ import {Adddevice} from '../screen/Mainpage/components/buttons/adddeviceButton';
 import {WelcomeScreen} from '../screen/WelcomeScreen/ui/WelcomeScreen';
 import {MainScreen} from '../screen/Mainpage/MainScreen';
 import {deepLinkingConfig} from '../link/deepLinkingConfig';
+import {ModalContent} from '../screen/Mainpage/components/modals/modalcontent';
+import {MainScreen2} from '../screen/Mainpage/MainScreen2';
 
 const RootStack = createNativeStackNavigator<ScreenStackParamList>();
 
@@ -29,6 +31,7 @@ export const RootNavigator = (): ReactElement | null => {
             <RootStack.Screen name={'Main'} component={MainScreen} />
             <RootStack.Screen name={'Accontrol'} component={AccontrolScreen} />
             <RootStack.Screen name={'QR'} component={QRCodeScanner} />
+            <RootStack.Screen name={'Main2'} component={MainScreen2} />
           </RootStack.Group>
         </>
       </RootStack.Navigator>

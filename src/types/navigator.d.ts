@@ -14,4 +14,8 @@ export type ScreenStackParamList = {
   QR: undefined;
   Add: undefined;
   Accontrol: undefined;
+  Main2: {
+    user: User | null; //* Logged In User
+    cmdFlag: number;
+  };
 };

@@ -9,13 +9,13 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {ModalContent} from './modalcontent';
+import {ModalContent2} from './modalcontent2';
 
 interface BottomSheetProps {
   bottomSheetVisible: boolean;
   setBottomSheetVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const BottomSheet = ({
+export const BottomSheet2 = ({
   bottomSheetVisible,
   setBottomSheetVisible,
 }: BottomSheetProps) => {
@@ -77,7 +77,7 @@ export const BottomSheet = ({
             transform: [{translateY}],
           }}
           {...panResponders.panHandlers}>
-          <ModalContent />
+          <ModalContent2 />
         </Animated.View>
       </View>
     </Modal>
