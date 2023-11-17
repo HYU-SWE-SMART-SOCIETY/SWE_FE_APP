@@ -114,7 +114,7 @@ export const BottomSheet = ({
           }}
           {...panResponders.panHandlers}>
           {!loading ? (
-            <ModalContent />
+            <ModalContent userId={userId} setting={setting} />
           ) : (
             <View
               style={{

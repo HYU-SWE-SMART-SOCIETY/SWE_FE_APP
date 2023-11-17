@@ -15,3 +15,14 @@ export interface SettingResponse {
   message: string | null;
   payload: Settings | null;
 }
+
+export interface ConnectedDevice {
+  instanceId: number;
+  isExist: boolean;
+}
+
+export interface SyncRequest {
+  user: stirng;
+  connectedDevices: ConnectedDevice[];
+  payloads: any;
+}

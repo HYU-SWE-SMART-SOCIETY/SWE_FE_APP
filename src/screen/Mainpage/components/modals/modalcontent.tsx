@@ -8,8 +8,16 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
+import {syncLogic} from '../../logic/syncLogic';
 
-export const ModalContent = ({}): ReactElement | null => {
+interface ContentInfo {
+  userId: number;
+  setting: string;
+}
+export const ModalContent = ({
+  userId,
+  setting,
+}: ContentInfo): ReactElement | null => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
@@ -80,7 +88,11 @@ export const ModalContent = ({}): ReactElement | null => {
               style={{marginTop: 5, marginBottom: 5}}
               source={require('./Line.png')}
             />
-            <TouchableOpacity style={{width: 500}}>
+            <TouchableOpacity
+              style={{width: 500}}
+              onPress={async () => {
+                await syncLogic(userId, setting);
+              }}>
               <View style={styles.alignrow}>
                 <Image
                   style={{
