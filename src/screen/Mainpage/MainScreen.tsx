@@ -31,6 +31,7 @@ export const MainScreen: React.FC<MainProps> = ({
 }: MainProps): ReactElement | null => {
   const [user, setUser] = useState<User | null>(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
+  const [curSettingName, setCurrentSettingName] = useState('자취방');
 
   const openSyncSetting = () => setBottomSheetVisible(true);
 
@@ -78,7 +79,7 @@ export const MainScreen: React.FC<MainProps> = ({
             alignItems: 'center',
           }}
           onPress={openSyncSetting}>
-          <Text style={styles.title}>자취방</Text>
+          <Text style={styles.title}>{curSettingName}</Text>
           <RoomSettingButton />
         </TouchableOpacity>
         <View style={styles.headerContainer2}>
@@ -116,6 +117,8 @@ export const MainScreen: React.FC<MainProps> = ({
         <Menubar />
       </View>
       <BottomSheet
+        userId={user != null ? user.id : 2} //* DEMO: Need to handle error case
+        settingName={curSettingName}
         bottomSheetVisible={bottomSheetVisible}
         setBottomSheetVisible={setBottomSheetVisible}
       />

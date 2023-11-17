@@ -1,21 +1,28 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
+  ActivityIndicator,
   Animated,
   Dimensions,
   Modal,
   PanResponder,
   StyleSheet,
   Text,
+  ToastAndroid,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import {ModalContent} from './modalcontent';
+import {fetchSettingData} from '../../api/fetchSettingData';
 
 interface BottomSheetProps {
+  userId: number;
+  settingName: string;
   bottomSheetVisible: boolean;
   setBottomSheetVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const BottomSheet = ({
+  userId,
+  settingName,
   bottomSheetVisible,
   setBottomSheetVisible,
 }: BottomSheetProps) => {
@@ -57,9 +64,38 @@ export const BottomSheet = ({
     }),
   ).current;
 
+  const [setting, setSetting] = useState('');
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (bottomSheetVisible) resetBottomSheetAnim.start();
   }, [bottomSheetVisible]);
+
+  //* Fetch Data
+  useEffect(() => {
+    fetchSettingData({
+      userId,
+      settingName,
+    }).then(res => {
+      if (!res.ok || res.payload?.data.instanceSetting == undefined) {
+        ToastAndroid.showWithGravity(
+          'ERROR! Something must be wrong...',
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER,
+        );
+      } else {
+        const settingString = res.payload.data.instanceSetting;
+        setSetting(settingString);
+      }
+    });
+  }, []);
+
+  //* End Loading
+  useEffect(() => {
+    if (setting.length > 0) {
+      setLoading(false);
+    }
+  }, [setting]);
 
   return (
     <Modal
@@ -77,7 +113,20 @@ export const BottomSheet = ({
             transform: [{translateY}],
           }}
           {...panResponders.panHandlers}>
-          <ModalContent />
+          {!loading ? (
+            <ModalContent />
+          ) : (
+            <View
+              style={{
+                display: 'flex',
+                width: '100%',
+                height: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <ActivityIndicator size={'large'} />
+            </View>
+          )}
         </Animated.View>
       </View>
     </Modal>
