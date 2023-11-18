@@ -7,9 +7,16 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  Linking,
 } from 'react-native';
+import {ModalpageProps} from '../../../../types/props';
+import {useLinkTo} from '@react-navigation/native';
 
-export const ModalContent = ({}): ReactElement | null => {
+export const ModalContent = ({
+  route,
+  navigation,
+}: ModalpageProps): ReactElement | null => {
+  const linkTo = useLinkTo();
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
@@ -80,7 +87,11 @@ export const ModalContent = ({}): ReactElement | null => {
               style={{marginTop: 5, marginBottom: 5}}
               source={require('./Line.png')}
             />
-            <TouchableOpacity style={{width: 500}}>
+            <TouchableOpacity
+              style={{width: 500}}
+              onPress={() => {
+                linkTo('/main2');
+              }}>
               <View style={styles.alignrow}>
                 <Image
                   style={{

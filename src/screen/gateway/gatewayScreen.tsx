@@ -61,6 +61,13 @@ export const GatewayScreen = ({
         }}>
         <Text style={styles.tag}>Move To Main2 Screen</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('loading');
+        }}>
+        <Text style={styles.tag}>Move To Loading Page</Text>
+      </TouchableOpacity>
     </View>
   );
 };

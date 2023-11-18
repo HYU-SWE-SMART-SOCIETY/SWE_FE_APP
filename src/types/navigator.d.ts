@@ -18,4 +18,6 @@ export type ScreenStackParamList = {
     user: User | null; //* Logged In User
     cmdFlag: number;
   };
+  Modal: undefined;
+  loading: undefined;
 };

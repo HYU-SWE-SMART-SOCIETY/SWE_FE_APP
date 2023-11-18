@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     backgroundColor: '#FFFFFF',
-    height: '15%',
+    height: '12%',
   },
   title: {
     fontSize: 17,

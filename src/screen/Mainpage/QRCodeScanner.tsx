@@ -1,3 +1,4 @@
+import {useLinkTo} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   Alert,
@@ -12,6 +13,7 @@ import {Camera, CameraType} from 'react-native-camera-kit';
 const QRCodeScanner = () => {
   const [scaned, setScaned] = useState<boolean>(true);
   const ref = useRef(null);
+  const linkto = useLinkTo();
 
   useEffect(() => {
     // 종료후 재시작을 했을때 초기화
@@ -21,7 +23,11 @@ const QRCodeScanner = () => {
   const onBarCodeRead = (event: any) => {
     if (!scaned) return;
     setScaned(false);
-    Linking.openURL(event.nativeEvent.codeStringValue);
+    /*<View style={[styles.container2, styles.horizontal]}>
+      <ActivityIndicator size="large" />;
+    </View>;*/
+    linkto('/loading');
+    //Linking.openURL(event.nativeEvent.codeStringValue);
   };
 
   return (
@@ -49,5 +55,15 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   scanner: {flex: 1},
+  container2: {
+    position: 'absolute',
+    marginTop: 30,
+    justifyContent: 'center',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
 });
 export default QRCodeScanner;

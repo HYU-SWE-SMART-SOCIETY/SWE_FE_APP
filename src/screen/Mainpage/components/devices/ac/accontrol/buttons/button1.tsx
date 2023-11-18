@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Linking} from 'react-native';
 
 export const Button1 = (): ReactElement | null => {
   return (

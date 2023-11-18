@@ -8,8 +8,8 @@ export const Report = (): ReactElement | null => {
       <TouchableOpacity style={componentStyles.buttonSetContainer}>
         <Image
           style={{
-            width: 45,
-            height: 45,
+            width: 35,
+            height: 35,
             marginLeft: 10,
             marginBottom: 3,
             alignContent: 'center',
