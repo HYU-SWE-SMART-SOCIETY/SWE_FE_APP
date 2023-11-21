@@ -12,10 +12,12 @@ import {syncLogic} from '../../logic/syncLogic';
 
 interface ContentInfo {
   userId: number;
+  userName: string;
   setting: string;
 }
 export const ModalContent = ({
   userId,
+  userName,
   setting,
 }: ContentInfo): ReactElement | null => {
   return (
@@ -91,7 +93,7 @@ export const ModalContent = ({
             <TouchableOpacity
               style={{width: 500}}
               onPress={async () => {
-                await syncLogic(userId, setting);
+                await syncLogic(userId, userName, setting);
               }}>
               <View style={styles.alignrow}>
                 <Image

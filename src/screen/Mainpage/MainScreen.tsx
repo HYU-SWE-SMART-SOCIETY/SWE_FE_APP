@@ -118,6 +118,7 @@ export const MainScreen: React.FC<MainProps> = ({
       </View>
       <BottomSheet
         userId={user != null ? user.id : 2} //* DEMO: Need to handle error case
+        userName={user != null ? user.name : 'Kang'}
         settingName={curSettingName}
         bottomSheetVisible={bottomSheetVisible}
         setBottomSheetVisible={setBottomSheetVisible}

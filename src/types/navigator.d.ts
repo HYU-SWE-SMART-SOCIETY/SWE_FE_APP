@@ -18,4 +18,9 @@ export type ScreenStackParamList = {
     user: User | null; //* Logged In User
     cmdFlag: number;
   };
+  Loading: {
+    navFuncFlag: number | string;
+    data: any;
+    text: string;
+  };
 };

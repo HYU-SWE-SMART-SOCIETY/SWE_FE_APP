@@ -16,12 +16,14 @@ import {fetchSettingData} from '../../api/fetchSettingData';
 
 interface BottomSheetProps {
   userId: number;
+  userName: string;
   settingName: string;
   bottomSheetVisible: boolean;
   setBottomSheetVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const BottomSheet = ({
   userId,
+  userName,
   settingName,
   bottomSheetVisible,
   setBottomSheetVisible,
@@ -114,7 +116,11 @@ export const BottomSheet = ({
           }}
           {...panResponders.panHandlers}>
           {!loading ? (
-            <ModalContent userId={userId} setting={setting} />
+            <ModalContent
+              userId={userId}
+              userName={userName}
+              setting={setting}
+            />
           ) : (
             <View
               style={{

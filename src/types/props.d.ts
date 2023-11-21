@@ -29,3 +29,8 @@ export type AccontrolProps = NativeStackScreenProps<
   ScreenStackParamList,
   'Accontrol'
 >;
+
+export type LoadingProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'Loading'
+>;
