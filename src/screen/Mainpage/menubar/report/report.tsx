@@ -1,11 +1,17 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Image} from 'react-native';
+import {ReportProps} from '../../../../types/props';
 
-export const Report = (): ReactElement | null => {
+export const Report = ({
+  route,
+  navigation,
+}: ReportProps): ReactElement | null => {
   return (
     <View>
-      <TouchableOpacity style={componentStyles.buttonSetContainer}>
+      <TouchableOpacity
+        style={componentStyles.buttonSetContainer}
+        onPress={() => navigation.navigate('briefing')}>
         <Image
           style={{
             width: 35,
@@ -25,7 +31,7 @@ export const Report = (): ReactElement | null => {
             marginBottom: 5,
             textAlign: 'center',
           }}>
-          보고서
+          브리핑
         </Text>
       </TouchableOpacity>
     </View>

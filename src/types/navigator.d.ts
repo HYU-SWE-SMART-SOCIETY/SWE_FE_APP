@@ -20,4 +20,8 @@ export type ScreenStackParamList = {
   };
   Modal: undefined;
   loading: undefined;
+  briefing: undefined;
+  holme: undefined;
+  menubar: undefined;
+  report: undefined;
 };

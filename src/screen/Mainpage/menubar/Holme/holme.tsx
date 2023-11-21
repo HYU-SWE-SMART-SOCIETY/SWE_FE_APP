@@ -1,11 +1,14 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Image} from 'react-native';
+import {HolmeProps} from '../../../../types/props';
 
-export const Holme = (): ReactElement | null => {
+export const Holme = ({route, navigation}: HolmeProps): ReactElement | null => {
   return (
     <View>
-      <TouchableOpacity style={componentStyles.buttonSetContainer}>
+      <TouchableOpacity
+        style={componentStyles.buttonSetContainer}
+        onPress={() => navigation.navigate('Main2')}>
         <Image
           style={{
             width: 35,
