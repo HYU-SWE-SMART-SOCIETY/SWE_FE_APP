@@ -75,6 +75,13 @@ export const GatewayScreen = ({
         }}>
         <Text style={styles.tag}>Loading Screen</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('briefing');
+        }}>
+        <Text style={styles.tag}>Move To briefing Page</Text>
+      </TouchableOpacity>
     </View>
   );
 };

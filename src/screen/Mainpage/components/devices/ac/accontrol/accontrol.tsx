@@ -35,7 +35,7 @@ export const AccontrolScreen = ({
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('Main')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Main2')}>
           <Image
             style={{
               width: 15,

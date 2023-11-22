@@ -108,7 +108,7 @@ export const MainScreen2: React.FC<MainProps2> = ({
         </View>
       </ScrollView>
       <View style={styles.bottomContainer}>
-        <Menubar />
+        <Menubar route={route} navigation={navigation} />
       </View>
       <BottomSheet2
         bottomSheetVisible={bottomSheetVisible}
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     backgroundColor: '#FFFFFF',
-    height: '15%',
+    height: '12%',
   },
   title: {
     fontSize: 17,
