@@ -12,13 +12,15 @@ import {syncLogic} from '../../logic/syncLogic';
 
 interface ContentInfo {
   userId: number;
-  userName: string;
   setting: string;
+  setData: React.Dispatch<any>;
+  setNavFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const ModalContent = ({
   userId,
-  userName,
   setting,
+  setData,
+  setNavFlag,
 }: ContentInfo): ReactElement | null => {
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -93,7 +95,7 @@ export const ModalContent = ({
             <TouchableOpacity
               style={{width: 500}}
               onPress={async () => {
-                await syncLogic(userId, userName, setting);
+                await syncLogic(userId, setting, setData, setNavFlag);
               }}>
               <View style={styles.alignrow}>
                 <Image

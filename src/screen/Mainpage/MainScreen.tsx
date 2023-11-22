@@ -32,6 +32,8 @@ export const MainScreen: React.FC<MainProps> = ({
   const [user, setUser] = useState<User | null>(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
   const [curSettingName, setCurrentSettingName] = useState('자취방');
+  const [navFlag, setNavFlag] = useState(false);
+  const [settingData, setSettingData] = useState<any>(null);
 
   const openSyncSetting = () => setBottomSheetVisible(true);
 
@@ -66,6 +68,21 @@ export const MainScreen: React.FC<MainProps> = ({
       setBottomSheetVisible(true);
     }
   }, [route.params?.cmdFlag]);
+
+  useEffect(() => {
+    if (navFlag) {
+      const data = {
+        user: user === null ? {userId: 2, username: 'Kang', ident: 'dd'} : user,
+        settingData,
+      };
+      console.log(data);
+      navigation.navigate('Loading', {
+        data,
+        text: '해당 설정/루틴을 연결하는 중입니다.',
+        navFuncFlag: 2,
+      });
+    }
+  }, [navFlag]);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -118,10 +135,11 @@ export const MainScreen: React.FC<MainProps> = ({
       </View>
       <BottomSheet
         userId={user != null ? user.id : 2} //* DEMO: Need to handle error case
-        userName={user != null ? user.name : 'Kang'}
         settingName={curSettingName}
         bottomSheetVisible={bottomSheetVisible}
         setBottomSheetVisible={setBottomSheetVisible}
+        setData={setSettingData}
+        setNavFlag={setNavFlag}
       />
     </SafeAreaView>
   );

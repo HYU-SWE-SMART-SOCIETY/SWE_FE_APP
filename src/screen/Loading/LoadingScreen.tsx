@@ -3,6 +3,9 @@ import {LoadingProps} from '../../types/props';
 import {StyleSheet, Text, ToastAndroid, View} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {navToFirstMain} from './logic/navigateToScreen';
+import {sendSyncRequest} from '../../api/sync/sendSyncRequest';
+import {SyncRequest} from '../../api/sync/types';
+import {SettingLoading} from '../../strings/strings';
 
 export const LoadingScreen = ({
   route,
@@ -14,7 +17,11 @@ export const LoadingScreen = ({
 
   useEffect(() => {
     if (loadingText != route.params.text) {
-      setLoadingText(route.params.text);
+      if (route.params.text === 'default') {
+        setLoadingText(SettingLoading);
+      } else {
+        setLoadingText(route.params.text);
+      }
     }
   }, [route.params.text]);
 
@@ -47,6 +54,42 @@ export const LoadingScreen = ({
         );
         navigation.replace('Main', {user: null, cmdFlag: 1});
       }, 5000);
+    } else if (navFlag === 2) {
+      //* Redirection for setting sync.
+      ToastAndroid.showWithGravity(
+        '설정/루틴을 적용중입니다...',
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
+      const user = data.user;
+      const userId: number = user.id;
+      const username: string = user.username;
+      const settingData: any = data.settingData;
+      setTimeout(() => {
+        const syncReq: SyncRequest = {
+          userId,
+          username,
+          setting: settingData,
+        };
+
+        sendSyncRequest(syncReq).then(res => {
+          if (res === null || res?.ok == false) {
+            ToastAndroid.showWithGravity(
+              'ERROR! ' + res?.message,
+              ToastAndroid.SHORT,
+              ToastAndroid.CENTER,
+            );
+          } else {
+            //* Sync Succeeded!!!!
+            ToastAndroid.showWithGravity(
+              '설정/루틴을 적용했습니다! :)',
+              ToastAndroid.SHORT,
+              ToastAndroid.CENTER,
+            );
+            navigation.replace('Main2', {user: user, cmdFlag: 0});
+          }
+        });
+      }, 2000);
     }
   }, [navFlag]);
 
@@ -61,7 +104,9 @@ export const LoadingScreen = ({
           autoPlay={true}
         />
       </View>
-      <Text style={textStyles.subText}>{'Catch Phrases in here.'}</Text>
+      <Text style={{...textStyles.subText, fontSize: 14}}>
+        {'HOLME. 언제, 어디서든, 내 환경을 유지하기.'}
+      </Text>
     </View>
   );
 };

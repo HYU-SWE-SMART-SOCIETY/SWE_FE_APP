@@ -16,17 +16,19 @@ import {fetchSettingData} from '../../api/fetchSettingData';
 
 interface BottomSheetProps {
   userId: number;
-  userName: string;
   settingName: string;
   bottomSheetVisible: boolean;
   setBottomSheetVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setData: React.Dispatch<any>;
+  setNavFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const BottomSheet = ({
   userId,
-  userName,
   settingName,
   bottomSheetVisible,
   setBottomSheetVisible,
+  setData,
+  setNavFlag,
 }: BottomSheetProps) => {
   const screenHeight = Dimensions.get('screen').height;
 
@@ -118,8 +120,9 @@ export const BottomSheet = ({
           {!loading ? (
             <ModalContent
               userId={userId}
-              userName={userName}
               setting={setting}
+              setData={setData}
+              setNavFlag={setNavFlag}
             />
           ) : (
             <View

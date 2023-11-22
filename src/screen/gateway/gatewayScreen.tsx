@@ -68,7 +68,7 @@ export const GatewayScreen = ({
         style={styles.button}
         onPress={() => {
           navigation.navigate('Loading', {
-            navFuncFlag: 1,
+            navFuncFlag: -1, //* Only shows the loading screen
             data: null,
             text: 'TODO_LOADING',
           });
