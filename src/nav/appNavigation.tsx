@@ -14,6 +14,7 @@ import {MainScreen} from '../screen/Mainpage/MainScreen';
 import {deepLinkingConfig} from '../link/deepLinkingConfig';
 import {ModalContent} from '../screen/Mainpage/components/modals/modalcontent';
 import {MainScreen2} from '../screen/Mainpage/MainScreen2';
+import {LoadingScreen} from '../screen/Loading/LoadingScreen';
 
 const RootStack = createNativeStackNavigator<ScreenStackParamList>();
 
@@ -26,6 +27,7 @@ export const RootNavigator = (): ReactElement | null => {
         <>
           <RootStack.Screen name={'Gateway'} component={GatewayScreen} />
           <RootStack.Group>
+            <RootStack.Screen name={'Loading'} component={LoadingScreen} />
             <RootStack.Screen name={'WelcomeMain'} component={WelcomeScreen} />
             <RootStack.Screen name={'LoginMain'} component={LoginScreen} />
             <RootStack.Screen name={'Main'} component={MainScreen} />

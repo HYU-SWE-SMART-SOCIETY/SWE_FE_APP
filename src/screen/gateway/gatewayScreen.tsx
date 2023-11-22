@@ -2,6 +2,7 @@ import React, {ReactElement} from 'react';
 import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SKIP_LOGIN} from '../../env/modes';
 import {GatewayProps} from '../../types/props';
+import {SettingLoading} from '../../strings/strings';
 
 export const GatewayScreen = ({
   route,
@@ -50,9 +51,11 @@ export const GatewayScreen = ({
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          Linking.openURL('holme://main?cmdFlag=1'); //* This will open the under modal
+          Linking.openURL(
+            `holme://loading?text=${SettingLoading}&navFuncFlag=1`,
+          ); //* This will open the under modal
         }}>
-        <Text style={styles.tag}>Deep Link Test - Main</Text>
+        <Text style={styles.tag}>Deep Link Test - Setting Fetch</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
@@ -60,6 +63,17 @@ export const GatewayScreen = ({
           navigation.navigate('Main2', {user: null, cmdFlag: 0});
         }}>
         <Text style={styles.tag}>Move To Main2 Screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Loading', {
+            navFuncFlag: -1, //* Only shows the loading screen
+            data: null,
+            text: 'TODO_LOADING',
+          });
+        }}>
+        <Text style={styles.tag}>Loading Screen</Text>
       </TouchableOpacity>
     </View>
   );

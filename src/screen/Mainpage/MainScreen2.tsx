@@ -45,19 +45,14 @@ export const MainScreen2: React.FC<MainProps2> = ({
     }
   }, [route.params?.user]);
 
-  useEffect(() => {
-    //* User Changed
-    if (user !== null) {
-      const {name} = user;
-
-      //* Android Toast
-      ToastAndroid.showWithGravity(
-        `${name} 님, 환영합니다.`,
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER,
-      );
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   //* User Changed
+  //   if (user !== null) {
+  //     const {name} = user;
+  //
+  //     //* Android Toast
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     if (route.params?.cmdFlag == 1) {

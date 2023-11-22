@@ -19,12 +19,16 @@ interface BottomSheetProps {
   settingName: string;
   bottomSheetVisible: boolean;
   setBottomSheetVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setData: React.Dispatch<any>;
+  setNavFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const BottomSheet = ({
   userId,
   settingName,
   bottomSheetVisible,
   setBottomSheetVisible,
+  setData,
+  setNavFlag,
 }: BottomSheetProps) => {
   const screenHeight = Dimensions.get('screen').height;
 
@@ -114,7 +118,12 @@ export const BottomSheet = ({
           }}
           {...panResponders.panHandlers}>
           {!loading ? (
-            <ModalContent />
+            <ModalContent
+              userId={userId}
+              setting={setting}
+              setData={setData}
+              setNavFlag={setNavFlag}
+            />
           ) : (
             <View
               style={{
