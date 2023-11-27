@@ -23,4 +23,6 @@ export type ScreenStackParamList = {
     data: any;
     text: string;
   };
+  briefing: undefined;
+  menubar: undefined;
 };

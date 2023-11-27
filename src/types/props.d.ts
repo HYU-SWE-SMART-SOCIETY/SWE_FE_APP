@@ -34,3 +34,13 @@ export type LoadingProps = NativeStackScreenProps<
   ScreenStackParamList,
   'Loading'
 >;
+
+export type BriefingProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'briefing'
+>;
+
+export type MenubarProps = NativeStackScreenProps<
+  ScreenStackParamList,
+  'menubar'
+>;

@@ -131,7 +131,7 @@ export const MainScreen: React.FC<MainProps> = ({
         </View>
       </ScrollView>
       <View style={styles.bottomContainer}>
-        <Menubar />
+        <Menubar route={route} navigation={navigation} />
       </View>
       <BottomSheet
         userId={user != null ? user.id : 2} //* DEMO: Need to handle error case
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     backgroundColor: '#FFFFFF',
-    height: '15%',
+    height: '12%',
   },
   title: {
     fontSize: 17,

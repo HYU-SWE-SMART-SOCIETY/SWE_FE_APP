@@ -6,8 +6,12 @@ import {Holme} from './Holme/holme';
 import {Report} from './report/report';
 import {Myhome} from './myhome/myhome';
 import {Image} from 'react-native';
+import {MenubarProps} from '../../../types/props';
 
-export const Menubar = (): ReactElement | null => {
+export const Menubar = ({
+  route,
+  navigation,
+}: MenubarProps): ReactElement | null => {
   return (
     <SafeAreaView>
       <View style={containerStyles.bottomContainer}>
@@ -21,8 +25,8 @@ export const Menubar = (): ReactElement | null => {
         <View style={containerStyles.buttonContainer2}>
           <Device />
           <Routine />
-          <Holme />
-          <Report />
+          <Holme route={route} navigation={navigation} />
+          <Report route={route} navigation={navigation} />
           <Myhome />
         </View>
       </View>

@@ -8,8 +8,8 @@ export const Device = (): ReactElement | null => {
       <TouchableOpacity style={componentStyles.buttonSetContainer}>
         <Image
           style={{
-            width: 45,
-            height: 45,
+            width: 35,
+            height: 35,
             marginLeft: 10,
             marginBottom: 3,
             alignContent: 'center',
@@ -20,7 +20,7 @@ export const Device = (): ReactElement | null => {
           style={{
             fontSize: 13,
             color: '#000000',
-            marginStart: 10,
+            marginStart: 2,
             fontFamily: 'Inter',
             marginBottom: 5,
           }}>
