@@ -31,6 +31,7 @@ export const MainScreen2: React.FC<MainProps2> = ({
 }: MainProps2): ReactElement | null => {
   const [user, setUser] = useState<User | null>(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
+  const [data, setData] = useState<any>(null);
 
   const openSyncSetting = () => setBottomSheetVisible(true);
 
@@ -45,14 +46,18 @@ export const MainScreen2: React.FC<MainProps2> = ({
     }
   }, [route.params?.user]);
 
-  // useEffect(() => {
-  //   //* User Changed
-  //   if (user !== null) {
-  //     const {name} = user;
-  //
-  //     //* Android Toast
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    //* User Changed
+    if (data != route.params.data) {
+      setData(route.params.data);
+    }
+  }, [route.params.data]);
+
+  useEffect(() => {
+    if (data != null) {
+      console.log(data); //* TODO
+    }
+  }, [data]);
 
   useEffect(() => {
     if (route.params?.cmdFlag == 1) {

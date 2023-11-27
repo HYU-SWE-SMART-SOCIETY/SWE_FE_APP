@@ -60,7 +60,7 @@ export const GatewayScreen = ({
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('Main2', {user: null, cmdFlag: 0});
+          navigation.navigate('Main2', {user: null, cmdFlag: 0, data: null});
         }}>
         <Text style={styles.tag}>Move To Main2 Screen</Text>
       </TouchableOpacity>

@@ -4,7 +4,7 @@ import {StyleSheet, Text, ToastAndroid, View} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {navToFirstMain} from './logic/navigateToScreen';
 import {sendSyncRequest} from '../../api/sync/sendSyncRequest';
-import {SyncRequest} from '../../api/sync/types';
+import {SyncRequest, SyncRes} from '../../api/sync/types';
 import {SettingLoading} from '../../strings/strings';
 
 export const LoadingScreen = ({
@@ -39,7 +39,7 @@ export const LoadingScreen = ({
 
   useEffect(() => {
     if (data != null) {
-      console.log(data);
+      // console.log(data);
     }
   }, [data]);
 
@@ -72,21 +72,31 @@ export const LoadingScreen = ({
           setting: settingData,
         };
 
-        sendSyncRequest(syncReq).then(res => {
-          if (res === null || res?.ok == false) {
+        sendSyncRequest(syncReq).then(resp => {
+          if (resp === null || resp?.ok == false) {
             ToastAndroid.showWithGravity(
-              'ERROR! ' + res?.message,
+              'ERROR! ' + resp?.message,
               ToastAndroid.SHORT,
               ToastAndroid.CENTER,
             );
           } else {
+            //* Check if sync succeed
+            const resultList: SyncRes[] = resp.res.result;
+
+            resultList.forEach(result => {
+              if (result.ok != 0) {
+                //* TODO: Add mechanism or logic to indicate the sync for such instance is failed.
+                //* TODO: Add subroutine to manage it.
+              }
+            });
+
             //* Sync Succeeded!!!!
             ToastAndroid.showWithGravity(
               '설정/루틴을 적용했습니다! :)',
               ToastAndroid.SHORT,
               ToastAndroid.CENTER,
             );
-            navigation.replace('Main2', {user: user, cmdFlag: 0});
+            navigation.replace('Main2', {user: user, cmdFlag: 0, data: resp});
           }
         });
       }, 2000);
