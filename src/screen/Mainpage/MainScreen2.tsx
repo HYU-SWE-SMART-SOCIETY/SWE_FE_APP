@@ -24,6 +24,7 @@ import {Wakeup2} from './components/routines/wakeup/wakeup2';
 import {Cleaning2} from './components/routines/cleaning/cleaning2';
 import {Training2} from './components/routines/training/training2';
 import {BottomSheet2} from './components/modals/BottomSheet2';
+import {fetchSettingData} from './api/fetchSettingData';
 
 export const MainScreen2: React.FC<MainProps2> = ({
   route,
@@ -32,6 +33,8 @@ export const MainScreen2: React.FC<MainProps2> = ({
   const [user, setUser] = useState<User | null>(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
   const [data, setData] = useState<any>(null);
+  const [ac_temp, setAcTemp] = useState<number | null>(null);
+  const [ac_trigger, setAcTrigger] = useState<boolean>(false);
 
   const openSyncSetting = () => setBottomSheetVisible(true);
 
@@ -48,14 +51,31 @@ export const MainScreen2: React.FC<MainProps2> = ({
 
   useEffect(() => {
     //* User Changed
-    if (data != route.params.data) {
-      setData(route.params.data);
+    if (data != route.params?.data) {
+      setData(route.params?.data);
+    } else {
+      fetchSettingData({
+        userId: 2,
+        settingName: '자취방', //* DEMO
+      }).then(resp => {
+        if (resp.payload?.data !== undefined) {
+          setData(JSON.parse(resp.payload?.data.instanceSetting));
+        }
+      });
     }
-  }, [route.params.data]);
+  }, [route.params?.data]);
 
   useEffect(() => {
     if (data != null) {
-      console.log(data); //* TODO
+      //* TODO: Apply AC Setting
+      if (Array.isArray(data)) {
+        data.forEach(setting => {
+          if (setting.instanceType == 3) {
+            setAcTemp(setting.payload.objTemperature);
+            setAcTrigger(setting.payload.trigger);
+          }
+        });
+      }
     }
   }, [data]);
 

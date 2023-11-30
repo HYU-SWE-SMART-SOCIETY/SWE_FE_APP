@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Image} from 'react-native';
-import {AccontrolProps} from '../../../../../types/navigator';
+import {AccontrolProps} from '../../../../../types/props';
 
 export const Ac = ({
   route,
@@ -11,7 +11,9 @@ export const Ac = ({
     <View>
       <TouchableOpacity
         style={componentStyles.buttonSetContainer}
-        onPress={() => navigation.navigate('Accontrol')}>
+        onPress={() =>
+          navigation.navigate('Accontrol', {trigger: false, temp: null})
+        }>
         <View style={componentStyles.imageContainer2}>
           <Image
             style={{
@@ -62,7 +64,7 @@ export const Ac = ({
               fontFamily: 'Inter',
               marginBottom: 5,
             }}>
-            18°C
+            Off
           </Text>
           <Image
             style={{

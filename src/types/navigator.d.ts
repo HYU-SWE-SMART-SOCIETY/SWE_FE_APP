@@ -13,7 +13,14 @@ export type ScreenStackParamList = {
   };
   QR: undefined;
   Add: undefined;
-  Accontrol: undefined;
+  Accontrol: {
+    trigger: boolean;
+    temp: number | null;
+  };
+  Accontrol2: {
+    trigger: boolean;
+    temp: number | null;
+  };
   Main2: {
     user: User | null; //* Logged In User
     cmdFlag: number;

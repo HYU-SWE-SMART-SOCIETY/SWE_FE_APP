@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {AccontrolProps} from '../../../../../../types/navigator';
+import {AccontrolProps} from '../../../../../../types/props';
 import {Image} from 'react-native';
 import {Button1} from './buttons/button1';
 import {Button2} from './buttons/button2';
@@ -31,7 +31,27 @@ import {Button13} from './buttons/button13';
 export const AccontrolScreen = ({
   route,
   navigation,
-}: AccontrolProps | null): ReactElement | null => {
+}: AccontrolProps): ReactElement | null => {
+  const [trigger, setTrigger] = useState(false);
+  const [temp, setTemp] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [airPurity, setAirPurity] = useState<string | null>(null);
+  const [acState, setAcState] = useState('로딩 중...');
+
+  useEffect(() => {
+    if (!loading) {
+      trigger ? setAcState('상태: 전원 켜짐') : setAcState('상태: 전원 꺼짐');
+    }
+    if (trigger) {
+      setAirPurity('좋음');
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    setTrigger(route.params.trigger);
+    setTemp(route.params.temp);
+    setLoading(false);
+  }, []);
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
@@ -50,7 +70,7 @@ export const AccontrolScreen = ({
       </View>
       <ScrollView>
         <View>
-          <Text style={styles.status}>상태: 전원 꺼짐</Text>
+          <Text style={styles.status}>{acState}</Text>
           <View style={styles.mainContainer}>
             <Image
               style={{
@@ -61,7 +81,7 @@ export const AccontrolScreen = ({
             />
             <Text style={styles.temperatureStatus}>
               실내 온도:
-              <Text style={styles.temperature}> 29°C</Text>
+              <Text style={styles.temperature}>{temp}</Text>
             </Text>
             <Image
               style={{
@@ -73,10 +93,10 @@ export const AccontrolScreen = ({
           <View style={styles.statusContainer}>
             <Text style={styles.temperatureStatus2}>
               실내 온도:
-              <Text style={styles.temperature}> 30°C</Text>
+              <Text style={styles.temperature}>{temp}</Text>
             </Text>
             <Text style={styles.temperatureStatus2}>
-              종합 청정도: <Text style={styles.temperature}> 좋음</Text>
+              종합 청정도: <Text style={styles.temperature}>{airPurity}</Text>
             </Text>
           </View>
         </View>

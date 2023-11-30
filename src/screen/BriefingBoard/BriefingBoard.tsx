@@ -1,98 +1,182 @@
 import React, {ReactElement, useEffect, useState} from 'react';
 import {
+  ActivityIndicator,
+  Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  Image,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import {BriefingProps} from '../../types/props';
 import {Menubar} from '../Mainpage/menubar/menubar';
+import {fetchAllReport} from './api/fetchAllReport';
+import {Report} from './types/types';
 
 export const BriefingBoard = ({
   route,
   navigation,
 }: BriefingProps): ReactElement | null => {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('Main2')}>
-          <Image
-            style={{
-              width: 15,
-              height: 15,
-              marginRight: 10,
-              marginTop: 3,
-            }}
-            source={require('./Vector.png')}
-          />
-        </TouchableOpacity>
-        <Text style={styles.title}>브리핑 보드</Text>
-      </View>
-      <View style={styles.buttons}>
-        <TouchableOpacity style={componentStyles.button}>
-          <Text style={styles.buttontext}>종합</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={componentStyles.button}>
-          <Text style={styles.buttontext}>연결</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={componentStyles.button}>
-          <Text style={styles.buttontext}>대체</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.mainContainer}>
-        <View style={componentStyles.textBox}>
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: '700',
-              marginLeft: 5,
-              marginTop: 5,
-              color: 'black',
-            }}>
-            10/18 18:17
-          </Text>
-          <Text style={styles.result}>
+  const [briefingList, setBriefingList] = useState<Report[] | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAllReport({
+      payload: {
+        userId: 2,
+      },
+    }).then(resp => {
+      setBriefingList(resp.data ?? null);
+      setLoading(false);
+    });
+  }, []);
+  const generateReportList = (): React.JSX.Element[] | null => {
+    if (!briefingList) {
+      return [
+        <View key={0} style={styles.mainContainer}>
+          <View style={componentStyles.textBox}>
+            <Text style={{...styles.result, textAlign: 'center', fontSize: 20}}>
+              {'생성된 브리핑이 없습니다! :('}
+            </Text>
+          </View>
+        </View>,
+      ];
+    }
+
+    return briefingList.map((briefing, idx) => {
+      const {reportType, created_at, payload} = briefing.report;
+      const labelColor =
+        reportType.toString() === 'SYNC'
+          ? 'blue'
+          : reportType.toString() === 'REPLACEMENT'
+          ? 'green'
+          : 'red';
+
+      return (
+        <View key={idx} style={styles.mainContainer}>
+          <View style={componentStyles.textBox}>
             <Text
               style={{
-                color: '#041B93',
+                fontSize: 14,
                 fontWeight: '700',
+                marginLeft: 5,
+                marginTop: 5,
+                color: 'black',
               }}>
-              한양 호텔 ITBT관 203호
+              {created_at}
             </Text>
-            에 성공적으로 기기들을 추가했습니다!
-          </Text>
-          <Text style={styles.result}>대체 불가능 한 기기: AI 정수기</Text>
-          <Text style={styles.result}>대체 가능 한 기기: TV</Text>
-          <Text style={styles.result}>
-            자동 연결한 기기: 커튼, 에어컨, 스마트 스피커
-          </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: '700',
+                marginLeft: 5,
+                color: labelColor,
+              }}>
+              {reportType.toString() === 'SYNC'
+                ? '연결 성공'
+                : reportType.toString() === 'REPLACEMENT'
+                ? '업그레이드 성공'
+                : '대체 성공'}
+            </Text>
+            <Text style={styles.result}>{payload}</Text>
+          </View>
         </View>
-        <View style={componentStyles.textBox}>
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: '700',
-              marginLeft: 5,
-              marginTop: 5,
-              color: 'black',
-            }}>
-            10/18 18:17
-          </Text>
+      );
+    });
+  };
+
+  const renderLoading = () => {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('Main2')}>
+            <Image
+              style={{
+                width: 15,
+                height: 15,
+                marginRight: 10,
+                marginTop: 3,
+              }}
+              source={require('./Vector.png')}
+            />
+          </TouchableOpacity>
+          <Text style={styles.title}>브리핑 보드</Text>
         </View>
-      </View>
-      <View style={styles.bottomContainer}>
-        <Menubar route={route} navigation={navigation} />
-      </View>
-    </SafeAreaView>
-  );
+        <View style={styles.buttons}>
+          <TouchableOpacity style={componentStyles.button}>
+            <Text style={styles.buttontext}>종합</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={componentStyles.button}>
+            <Text style={styles.buttontext}>연결</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={componentStyles.button}>
+            <Text style={styles.buttontext}>대체</Text>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <ActivityIndicator size={'large'} />
+        </View>
+        <View style={styles.bottomContainer}>
+          <Menubar route={route} navigation={navigation} />
+        </View>
+      </SafeAreaView>
+    );
+  };
+  const renderScreen = () => {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('Main2')}>
+            <Image
+              style={{
+                width: 15,
+                height: 15,
+                marginRight: 10,
+                marginTop: 3,
+              }}
+              source={require('./Vector.png')}
+            />
+          </TouchableOpacity>
+          <Text style={styles.title}>브리핑 보드</Text>
+        </View>
+        <View style={styles.buttons}>
+          <TouchableOpacity style={componentStyles.button}>
+            <Text style={styles.buttontext}>종합</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={componentStyles.button}>
+            <Text style={styles.buttontext}>연결</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={componentStyles.button}>
+            <Text style={styles.buttontext}>대체</Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView style={styles.scrollViewContainer}>
+          {generateReportList()}
+        </ScrollView>
+        <View style={styles.bottomContainer}>
+          <Menubar route={route} navigation={navigation} />
+        </View>
+      </SafeAreaView>
+    );
+  };
+
+  return loading ? renderLoading() : renderScreen();
 };
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   headerContainer: {
     flexDirection: 'row',
@@ -105,7 +189,10 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     justifyContent: 'flex-start',
-    marginBottom: 175,
+  },
+  scrollViewContainer: {
+    display: 'flex',
+    margin: 30,
   },
   title: {
     fontSize: 17,
@@ -121,7 +208,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttons: {
-    flex: 1,
     flexDirection: 'row',
     backgroundColor: 'white',
     marginLeft: 20,
@@ -156,6 +242,7 @@ const componentStyles = StyleSheet.create({
     height: 160.53,
     backgroundColor: '#D9D9D9',
     alignSelf: 'center',
+    borderRadius: 15,
     marginTop: 15,
   },
 });

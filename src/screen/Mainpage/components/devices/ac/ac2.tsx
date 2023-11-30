@@ -1,18 +1,22 @@
 import React, {ReactElement} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Image} from 'react-native';
-import {AccontrolProps} from '../../../../../types/navigator';
+import {AccontrolProps} from '../../../../../types/props';
 import {rgbaColor} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 
 export const Ac2 = ({
   route,
   navigation,
+  trigger,
+  temp,
 }: AccontrolProps): ReactElement | null => {
   return (
     <View>
       <TouchableOpacity
         style={componentStyles.buttonSetContainer}
-        onPress={() => navigation.navigate('Accontrol')}>
+        onPress={() =>
+          navigation.navigate('Accontrol', {trigger: true, temp: 22})
+        }>
         <View style={componentStyles.imageContainer2}>
           <Image
             style={{
@@ -63,7 +67,7 @@ export const Ac2 = ({
               fontFamily: 'Inter',
               marginBottom: 5,
             }}>
-            18°C
+            22°C
           </Text>
           <Image
             style={{
