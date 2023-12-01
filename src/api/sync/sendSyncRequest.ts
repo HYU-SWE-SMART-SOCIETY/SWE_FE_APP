@@ -27,7 +27,7 @@ export const sendSyncRequest = async (
       };
 
       const syncResp = await axios.post(
-        'http://localhost:11000/api/v1/sync/request',
+        'http://localhost:11000/api/v1/sync/request?type=sync_ai',
         syncReq,
       );
 
